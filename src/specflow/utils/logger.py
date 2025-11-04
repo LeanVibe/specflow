@@ -1,7 +1,6 @@
 """Logging configuration for SpecFlow."""
 
 import logging
-import sys
 from typing import Any
 
 from rich.console import Console

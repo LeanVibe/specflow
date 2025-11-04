@@ -1,6 +1,5 @@
 """Auth command for SpecFlow CLI."""
 
-import os
 
 import typer
 

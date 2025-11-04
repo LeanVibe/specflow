@@ -1,14 +1,13 @@
 """Pytest configuration and shared fixtures."""
 
-from datetime import datetime
 from uuid import UUID, uuid4
 
 import pytest
 
 from specflow.models import (
+    PRD,
     ComplexityLevel,
     Feature,
-    PRD,
     PRDMetadata,
     PRDSection,
     PriorityLevel,

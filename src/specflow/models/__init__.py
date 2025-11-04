@@ -12,9 +12,9 @@ from specflow.models.analysis import (
     SeverityLevel,
 )
 from specflow.models.prd import (
+    PRD,
     ComplexityLevel,
     Feature,
-    PRD,
     PRDMetadata,
     PRDSection,
     PriorityLevel,

@@ -2,7 +2,6 @@
 
 import pytest
 
-from specflow.models import PriorityLevel, PRD
 from specflow.parsers.base import InvalidFormatError
 from specflow.parsers.markdown import MarkdownParser
 

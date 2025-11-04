@@ -11,7 +11,6 @@ from specflow.cli.output import (
     display_success,
     display_warning,
 )
-from specflow.integrations.ticket_converter import TicketConverter
 from specflow.models import PRD, TicketDraft, TicketPriority, TicketType
 from specflow.utils.logger import LoggerMixin
 

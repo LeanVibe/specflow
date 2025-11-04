@@ -11,7 +11,7 @@ from specflow.intelligence import (
     FeatureExtractor,
     QualityScorer,
 )
-from specflow.models import Feature, PRD, PRDMetadata
+from specflow.models import PRD, Feature, PRDMetadata
 
 
 class TestIntelligenceIntegration:

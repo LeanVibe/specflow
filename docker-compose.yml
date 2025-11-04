@@ -1,0 +1,78 @@
+version: '3.8'
+
+services:
+  specflow-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: specflow-api
+    ports:
+      - "8000:8000"
+    environment:
+      # AI Provider Configuration
+      - AI_PROVIDER=${AI_PROVIDER:-openai}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+
+      # Jira Configuration
+      - JIRA_CLIENT_ID=${JIRA_CLIENT_ID}
+      - JIRA_CLIENT_SECRET=${JIRA_CLIENT_SECRET}
+      - JIRA_BASE_URL=${JIRA_BASE_URL}
+      - JIRA_REDIRECT_URI=${JIRA_REDIRECT_URI:-http://localhost:8000/api/oauth/jira/callback}
+
+      # Optional Integrations
+      - NOTION_API_KEY=${NOTION_API_KEY}
+      - GOOGLE_DOCS_CREDENTIALS_FILE=${GOOGLE_DOCS_CREDENTIALS_FILE}
+    volumes:
+      # Mount local data directory for persistent storage
+      - ./data:/app/data
+      # Mount logs directory
+      - ./logs:/app/logs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+    networks:
+      - specflow-network
+
+  # Optional: Add Redis for caching (future enhancement)
+  # redis:
+  #   image: redis:7-alpine
+  #   container_name: specflow-redis
+  #   ports:
+  #     - "6379:6379"
+  #   volumes:
+  #     - redis-data:/data
+  #   restart: unless-stopped
+  #   networks:
+  #     - specflow-network
+
+  # Optional: Add PostgreSQL for persistent storage (future enhancement)
+  # postgres:
+  #   image: postgres:15-alpine
+  #   container_name: specflow-db
+  #   environment:
+  #     - POSTGRES_USER=specflow
+  #     - POSTGRES_PASSWORD=${DB_PASSWORD}
+  #     - POSTGRES_DB=specflow
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - postgres-data:/var/lib/postgresql/data
+  #   restart: unless-stopped
+  #   networks:
+  #     - specflow-network
+
+networks:
+  specflow-network:
+    driver: bridge
+
+volumes:
+  # redis-data:
+  # postgres-data:
+  data:
+  logs:

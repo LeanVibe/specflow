@@ -7,11 +7,11 @@ import pytest
 
 from specflow.intelligence.analyzer import AmbiguityAnalyzer
 from specflow.models import (
+    PRD,
     AmbiguityIssue,
     AmbiguityReport,
     AmbiguityType,
     Feature,
-    PRD,
     PRDMetadata,
     SeverityLevel,
 )

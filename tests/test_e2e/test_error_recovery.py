@@ -7,8 +7,8 @@ without crashing or losing data.
 import pytest
 from fastapi.testclient import TestClient
 
-from specflow.intelligence import AmbiguityAnalyzer, QualityScorer
 from specflow.integrations import TicketConverter
+from specflow.intelligence import AmbiguityAnalyzer, QualityScorer
 from specflow.models import TicketDraft, TicketPriority, TicketType
 from specflow.parsers import InvalidFormatError, MarkdownParser, ParseFailureError
 

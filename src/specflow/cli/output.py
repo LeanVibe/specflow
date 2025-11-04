@@ -1,12 +1,11 @@
 """Rich output formatting utilities for CLI."""
 
-from typing import Any
 
 from rich.console import Console
 from rich.progress import Progress
 from rich.table import Table
 
-from specflow.models import AmbiguityIssue, PRD, QualityScore
+from specflow.models import PRD, AmbiguityIssue, QualityScore
 
 console = Console()
 

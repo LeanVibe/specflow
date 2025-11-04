@@ -185,7 +185,7 @@ class TestPerformance:
         # Performance check: Complete pipeline should finish in under 10 seconds
         assert total_time < 10.0, f"Pipeline took {total_time:.2f}s, expected < 10s"
 
-        print(f"\nPipeline Performance Breakdown:")
+        print("\nPipeline Performance Breakdown:")
         print(f"  Parse:   {parse_time:.3f}s")
         print(f"  Score:   {score_time:.3f}s")
         print(f"  Draft:   {draft_time:.3f}s")

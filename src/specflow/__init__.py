@@ -3,12 +3,12 @@
 __version__ = "0.1.0"
 
 from specflow.models import (
+    PRD,
     AmbiguityIssue,
     AmbiguityReport,
     ComplexityLevel,
     Feature,
     JiraTicket,
-    PRD,
     PriorityLevel,
     QualityScore,
     Requirement,

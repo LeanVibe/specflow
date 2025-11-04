@@ -1,14 +1,17 @@
 """Parse command for SpecFlow CLI."""
 
-import json
 from pathlib import Path
-from typing import Optional
 
 import typer
 
-from specflow.cli.output import display_error, display_features_summary, display_info, display_prd_summary, display_success
-from specflow.parsers.markdown import MarkdownParser
+from specflow.cli.output import (
+    display_error,
+    display_features_summary,
+    display_prd_summary,
+    display_success,
+)
 from specflow.parsers.base import InvalidFormatError, ParseFailureError
+from specflow.parsers.markdown import MarkdownParser
 from specflow.utils.logger import LoggerMixin
 
 
@@ -19,7 +22,7 @@ class ParseCommand(LoggerMixin):
         self,
         file_path: Path = typer.Argument(..., help="Path to PRD file"),
         format: str = typer.Option("markdown", help="PRD format (markdown)"),
-        output: Optional[Path] = typer.Option(None, help="Save parsed PRD to JSON"),
+        output: Path | None = typer.Option(None, help="Save parsed PRD to JSON"),
     ) -> None:
         """Parse a PRD file into structured format.
 
@@ -89,7 +92,7 @@ _parse_cmd = ParseCommand()
 def parse(
     file_path: Path = typer.Argument(..., help="Path to PRD file"),
     format: str = typer.Option("markdown", help="PRD format (markdown)"),
-    output: Optional[Path] = typer.Option(None, help="Save parsed PRD to JSON"),
+    output: Path | None = typer.Option(None, help="Save parsed PRD to JSON"),
 ) -> None:
     """Parse a PRD file into structured format."""
     _parse_cmd.parse_prd(file_path, format, output)

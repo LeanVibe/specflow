@@ -1,6 +1,6 @@
 """Tests for Feature Extractor using pydantic.ai."""
 
-from unittest.mock import MagicMock, patch
+from unittest.mock import patch
 from uuid import uuid4
 
 import pytest

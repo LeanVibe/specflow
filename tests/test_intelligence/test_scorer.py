@@ -1,14 +1,13 @@
 """Tests for Quality Scorer using pydantic.ai."""
 
-from unittest.mock import patch
 from uuid import uuid4
 
 import pytest
 
 from specflow.intelligence.scorer import QualityScorer
 from specflow.models import (
-    Feature,
     PRD,
+    Feature,
     PRDMetadata,
     QualityCheck,
     QualityCheckCategory,

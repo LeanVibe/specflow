@@ -6,12 +6,12 @@ import pytest
 from pydantic import ValidationError
 
 from specflow.models import (
+    PRD,
     AmbiguityIssue,
     AmbiguityReport,
     AmbiguityType,
     ComplexityLevel,
     Feature,
-    PRD,
     PriorityLevel,
     QualityCheck,
     QualityCheckCategory,
@@ -22,7 +22,6 @@ from specflow.models import (
     TicketBatch,
     TicketDraft,
     TicketPriority,
-    TicketStatus,
     TicketType,
 )
 

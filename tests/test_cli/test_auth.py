@@ -1,6 +1,5 @@
 """Tests for CLI auth command."""
 
-import pytest
 from typer.testing import CliRunner
 
 from specflow.cli.main import app

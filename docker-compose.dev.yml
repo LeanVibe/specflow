@@ -1,0 +1,47 @@
+version: '3.8'
+
+# Development override for docker-compose.yml
+# Usage: docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
+
+services:
+  specflow-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      # Use cache for faster rebuilds
+      cache_from:
+        - specflow-api:latest
+    volumes:
+      # Mount source code for hot reload
+      - ./src:/app/src:ro
+      # Mount tests for running in container
+      - ./tests:/app/tests:ro
+    environment:
+      # Development mode
+      - PYTHONUNBUFFERED=1
+      - LOG_LEVEL=DEBUG
+    command: ["uvicorn", "specflow.api.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+    ports:
+      - "8000:8000"
+    networks:
+      - specflow-network
+
+  # Development tools container
+  specflow-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: specflow-dev
+    volumes:
+      - ./src:/app/src
+      - ./tests:/app/tests
+      - ./pyproject.toml:/app/pyproject.toml
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: ["sleep", "infinity"]
+    networks:
+      - specflow-network
+
+networks:
+  specflow-network:
+    driver: bridge

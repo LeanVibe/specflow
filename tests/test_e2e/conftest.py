@@ -1,15 +1,14 @@
 """Shared fixtures for E2E tests."""
 
-from pathlib import Path
 from uuid import uuid4
 
 import pytest
 from fastapi.testclient import TestClient
 
 from specflow.models import (
+    PRD,
     ComplexityLevel,
     Feature,
-    PRD,
     PRDMetadata,
     PriorityLevel,
     Requirement,
