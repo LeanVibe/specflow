@@ -156,7 +156,7 @@ async def analyze_prd(prd_id: UUID) -> PRDAnalysisResponse:
     ambiguity_report = ambiguity_analyzer.detect_ambiguities(prd)
 
     # Score feature quality
-    feature_scores = [quality_scorer.score_readiness(feature) for feature in prd.features]
+    feature_scores = [quality_scorer.score_readiness(feature, prd.prd_id) for feature in prd.features]
 
     # Calculate average quality score
     avg_quality = (
@@ -196,7 +196,7 @@ async def analyze_prd(prd_id: UUID) -> PRDAnalysisResponse:
             clarity_score=score.clarity_score,
             testability_score=score.testability_score,
             is_ready=score.is_ready,
-            missing_elements=score.missing_elements,
+            missing_elements=score.blocking_issues,
         )
         for score in feature_scores
     ]
