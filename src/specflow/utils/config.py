@@ -34,6 +34,7 @@ class Settings(BaseSettings):
     gemini_api_key: SecretStr | None = None
 
     # Jira Integration
+    jira_base_url: str | None = None  # e.g., https://your-company.atlassian.net
     jira_client_id: str | None = None
     jira_client_secret: SecretStr | None = None
     jira_redirect_uri: str = "http://localhost:8000/api/integrations/jira/callback"
