@@ -77,6 +77,7 @@ class Feature(BaseModel):
         description="Feature-level acceptance criteria (aggregated from requirements)",
     )
     test_stubs: list[str] = Field(default_factory=list, description="Generated test case templates")
+    edge_cases: list[str] = Field(default_factory=list, description="Edge cases to consider")
     priority: PriorityLevel = PriorityLevel.MEDIUM
     complexity: ComplexityLevel = ComplexityLevel.MODERATE
     estimated_days: float | None = Field(None, ge=0, description="Estimated development time in days")
