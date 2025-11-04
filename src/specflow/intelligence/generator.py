@@ -63,9 +63,8 @@ Given a valid email and password, when user submits login form, then user is aut
 
 Return exactly 3-5 acceptance criteria."""
 
-        return Agent(
+        return Agent[CriteriaList](
             self._get_model(),
-            result_type=CriteriaList,
             system_prompt=system_prompt,
         )
 
@@ -94,9 +93,8 @@ Example test stubs:
 
 Return 3-7 test stub names."""
 
-        return Agent(
+        return Agent[TestStubList](
             self._get_model(),
-            result_type=TestStubList,
             system_prompt=system_prompt,
         )
 

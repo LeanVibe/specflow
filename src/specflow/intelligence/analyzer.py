@@ -8,10 +8,10 @@ from pydantic import BaseModel
 from pydantic_ai import Agent
 
 from specflow.models import (
+    PRD,
     AmbiguityIssue,
     AmbiguityReport,
     AmbiguityType,
-    PRD,
     SeverityLevel,
 )
 from specflow.utils.config import get_settings
@@ -84,9 +84,8 @@ For each issue provide:
 
 Be thorough but not pedantic. Focus on issues that would cause confusion during implementation."""
 
-        return Agent(
+        return Agent[AmbiguityIssueList](
             self._get_model(),
-            result_type=AmbiguityIssueList,
             system_prompt=system_prompt,
         )
 

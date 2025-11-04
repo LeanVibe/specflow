@@ -1,6 +1,5 @@
 """Feature extraction from unstructured PRD text using pydantic.ai."""
 
-from typing import Any
 
 from pydantic import BaseModel
 from pydantic_ai import Agent
@@ -60,9 +59,8 @@ Return a structured list of Feature objects."""
         }
         model = model_mapping.get(self.settings.ai_provider, "openai:gpt-4o")
 
-        return Agent(
+        return Agent[FeatureList](
             model,
-            result_type=FeatureList,
             system_prompt=system_prompt,
         )
 
